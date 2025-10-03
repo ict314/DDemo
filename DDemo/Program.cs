@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 
 namespace DDemo
 {
@@ -26,7 +26,8 @@ namespace DDemo
                 throw new ApplicationException($"invalid {baseUri}");
 
             Guid newEnvelopeId = await Envelope.Create.New(baseUri, options.Document, accessToken, options.ApiAccountId, options.Signers);
-            Console.WriteLine("new envelope created with id " + newEnvelopeId);
+            if (newEnvelopeId != Guid.Empty)
+                Console.WriteLine("new envelope created with id " + newEnvelopeId);
         }
     }
 }
